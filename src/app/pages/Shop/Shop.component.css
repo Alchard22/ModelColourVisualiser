@@ -1,0 +1,42 @@
+.options-container {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #EEEEEE;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1; 
+    width: 6%;
+    margin: 1%;
+
+}
+
+.options-content {
+    width: 160px; 
+}
+
+.h5-content {
+    text-align: center;
+    font-family: "Inter", sans-serif;
+    font-size: 110%;
+    margin: 8%;
+}
+
+
+.button-content {
+    background-color: #00ADB5;
+    font-family: "Inter", sans-serif;
+    border-radius: 8px;
+    width: 96.5%;
+    
+}
+
+.input-content {
+    background-color: black;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+    font-family: "Inter", sans-serif;
+    width: 92%;
+}

@@ -1,6 +1,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
 
 <div style="position: relative;">
     <div class="options-container">
@@ -13,6 +14,9 @@
                 [cpToggle]="true"
             />
             <button class="button-content" (click)="selector()">Load Colour</button>
+        </div>
+        <div class="hex-container">
+            <h5 class="digitalFont">{{this.color}}</h5>
         </div>
     </div>
     <div class="model-container">

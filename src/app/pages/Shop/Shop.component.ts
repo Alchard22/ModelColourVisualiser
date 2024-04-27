@@ -13,11 +13,10 @@ export class ShopComponent implements OnInit {
 
 
   constructor(private dataService : DataServiceService) { }
-  color: string = '#127bdc';
+  color: string;
   ngOnInit() {
-    /*
-    Subscription to different button presses, alerting component
-    */
+    var data = localStorage.getItem('assetNameForReload') ?? ''
+    this.color = data.substring(data.indexOf( ',')+2);
   }
 
   sendData(input: string){

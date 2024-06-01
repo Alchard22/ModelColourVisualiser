@@ -1,25 +1,47 @@
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap"
+      rel="stylesheet"
+    />
 
-<div style="position: relative;">
-    <div class="options-container">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <div style="position: relative">
+      <div
+        class="options-container container-575 container-576 container-768 container-992 container-1200 container-2160"
+      >
         <div class="options-content">
-            <h5 class="h5-content">Colour Picker</h5>
-            <input placeholder="Click Me!" class="input-content" [(colorPicker)]="color" 
-                [style.background]="color"
-                [cpDialogDisplay]="'popup'"
-                [cpOKButton]="true"
-                [cpToggle]="true"
-            />
-            <button class="button-content" (click)="selector()">Load Colour</button>
+          <h5 class="h5-content">Colour Picker</h5>
+          <input
+            placeholder="Click Me!"
+            class="input-content"
+            [(colorPicker)]="color"
+            [style.background]="color"
+            [cpDialogDisplay]="'popup'"
+            [cpOKButton]="true"
+            [cpToggle]="true"
+          />
+          <button class="button-content" (click)="selector()">
+            Load Colour
+          </button>
         </div>
-        <div class="hex-container">
-            <h5 class="digitalFont">{{this.color}}</h5>
+        <div class="hex-container hex-container-575 hex-container-576 hex-container-768 hex-container-992 hex-container-1200 hex-container-2160">
+          <h5 class="digitalFont digitalFont575 digitalFont576">{{ this.color }}</h5>
         </div>
-    </div>
-    <div class="model-container">
+      </div>
+      <div class="model-container">
         <app-model></app-model>
+      </div>
     </div>
-</div>
+  </body>
+</html>

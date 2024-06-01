@@ -7,9 +7,11 @@
     padding: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     z-index: 1; 
-    width: 6%;
+    /* width: 6%; */
     margin: 1%;
-
+    justify-content: center;
+    display: flex;
+    
 }
 
 .hex-container {
@@ -63,4 +65,137 @@
     font-weight: bold;
     font-family: "Inter", sans-serif;
     width: 92%;
+    margin-bottom: 0.5px;
+}
+@media (max-width: 575px) { 
+    /* smallest | to do add another minimum size for 420 and below*/
+    .container-575 {
+        width: 111px;
+        font-size: 80%;
+    }
+
+    .hex-container-575 {
+        width: 137px;
+        left: -2px;
+        top: 110px;
+        height: 20px;
+    }
+
+    .digitalFont576 { 
+        font-size: 25px;
+        width: calc(200% - 2%);
+    }
+
+    .header {
+        font-size: 1.75rem;
+    }
+
+    .menu {
+        display: block;
+        text-align: center;
+    }
+}
+
+
+@media (min-width: 576px) {
+    .container-576 {
+        width: 180px;
+    }
+
+    .hex-container-576 {
+        width: 320px;
+        left: 205px;
+    }
+
+    .digitalFont575 { 
+        font-size: 55px;
+        width: calc(200% - 2%);
+    }
+
+
+    .header {
+        font-size: 1.75rem;
+    }
+
+    .menu {
+        display: block;
+        text-align: center;
+    }
+}
+
+@media (min-width: 768px) {
+    .container-768 {
+        width: 180px;
+    }
+
+    .hex-container-768 {
+        width: 320px;
+        left: 220px;
+    }
+
+    .header {
+        font-size: 2rem;
+    }
+
+    .menu {
+        display: flex;
+        justify-content: center;
+    }
+}
+
+@media (min-width: 992px) {
+    .container-992 {
+        width: 180px;
+    }
+
+    .hex-container-992 {
+        width: 320px;
+        left: 220px;
+    }
+
+    .header {
+        font-size: 2.25rem;
+    }
+
+    .menu {
+        justify-content: space-between;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container-1200 {
+        width: 180px;
+    }
+
+    .hex-container-1200 {
+        width: 320px;
+        left: 240px;
+    }
+
+    .header {
+        font-size: 2.5rem;
+    }
+
+    .menu {
+        justify-content: space-around;
+    }
+}
+
+@media (min-width: 2160px) {
+    .container-2160 {
+        width: 180px;
+    }
+
+    .hex-container-2160 {
+        width: 320px;
+        left: 210px;
+    }
+
+    .header {
+        font-size: 2.5rem;
+    }
+
+    .menu {
+        justify-content: space-around;
+    }
 }

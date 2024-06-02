@@ -4,8 +4,7 @@ import { GLTFLoader, GLTF } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { CSS2DRenderer } from 'three/examples/jsm/renderers/CSS2DRenderer.js';
 import { DataServiceService } from '../data-service.service';
-
-// TO DO Send hexcode to alter colour of lighting via front end.
+import { ModelInfo } from '../interfaces/modelInfo';
 
 @Component({
   selector: 'app-model',
@@ -14,25 +13,24 @@ import { DataServiceService } from '../data-service.service';
 })
 
 export class ModelComponent implements OnInit, AfterViewInit {
-
-  model: string = 'keyboard';
-  data: string;
+  emptyModel: ModelInfo = {
+    model: '',
+    colour: ''
+  }
+  modelData: ModelInfo;
   counter: boolean = false;
-  lighting: string = '#FFFFFF';
   constructor(private dataService : DataServiceService) {
     this.dataService.getData().subscribe((data) => {
       
-      if(data !== ''){
+      if(data.colour !== ''){
         
         if(this.counter === false){
           this.counter = true;
         } 
-        this.data = data
-        this.model = this.data.substring(0, this.data.indexOf( ','))
-        this.lighting = this.data.substring(this.data.indexOf( ',')+2)
+        this.modelData = data
         
         if (this.counter === true) {
-          localStorage.setItem('assetNameForReload', this.data)
+          localStorage.setItem('modelData', JSON.stringify(this.modelData))
           window.location.reload()
         }
 
@@ -40,14 +38,12 @@ export class ModelComponent implements OnInit, AfterViewInit {
       }
     })
    }
-  ngOnInit(): void { // TO DO What if we don't need to reload the asset to change the colour - Look into this (forget for now focus on colour picker)
+  ngOnInit(): void { // TO DO Load asset without reloading page
 
-       this.data = localStorage.getItem('assetNameForReload') ?? ''
-    if(this.data !== ''){
-      localStorage.removeItem('assetNameForReload')
+       this.modelData = JSON.parse(localStorage.getItem('modelData')!) ?? this.emptyModel
+    if(this.modelData.colour !== ''){
+      localStorage.removeItem('modelData')
       this.counter = true;
-      this.model = this.data.substring(0, this.data.indexOf( ','))
-      this.lighting = this.data.substring(this.data.indexOf( ',')+2)
       this.testing()
     }
   }
@@ -73,7 +69,7 @@ let object: THREE.Object3D<THREE.Object3DEventMap>;
 let controls;
 
 //Set which object to render
-let objToRender = this.model;
+let objToRender = this.modelData.model;
 
 //Instantiate a loader for the .gltf file
 const loader = new GLTFLoader();
@@ -104,15 +100,15 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 document.getElementById("container3D")!.appendChild(renderer.domElement);
 
 //Set how far the camera will be from the 3D model
-camera.position.z = objToRender === this.model ? 30: 25;
+camera.position.z = objToRender === this.modelData.model ? 30: 25;
 
 //Add lights to the scene, so we can actually see the 3D model
-const topLight = new THREE.DirectionalLight(this.lighting, 75); // (color, intensity)
+const topLight = new THREE.DirectionalLight(this.modelData.colour, 75); // (color, intensity)
 topLight.position.set(500, 500, 500) //top-left-ish
 topLight.castShadow = true;
 scene.add(topLight);
 
-const ambientLight = new THREE.AmbientLight(this.lighting, objToRender === this.model ? 5 : 40);
+const ambientLight = new THREE.AmbientLight(this.modelData.colour, objToRender === this.modelData.model ? 5 : 40);
 scene.add(ambientLight);
 
 //This adds controls to the camera, so we can rotate / zoom it with the mouse
@@ -124,7 +120,7 @@ function changeColour(){ // TO DO
   const topLight = new THREE.DirectionalLight('#0000FF', 75);
   topLight.position.set(500, 500, 500) //top-left-ish
   topLight.castShadow = true;
-  const ambientLight = new THREE.AmbientLight('#0000FF', objToRender === self.model ? 5 : 40);
+  const ambientLight = new THREE.AmbientLight('#0000FF', objToRender === self.modelData.model ? 5 : 40);
   scene.add(topLight);
   scene.add(ambientLight);
   console.log('change colour function')

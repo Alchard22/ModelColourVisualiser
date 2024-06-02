@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { ModelInfo } from './interfaces/modelInfo';
 
 @Injectable({
   providedIn: 'root'
@@ -7,10 +8,13 @@ import { BehaviorSubject } from 'rxjs';
 export class DataServiceService {
 
   constructor() { }
+  emptyModel: ModelInfo = {
+    model: '',
+    colour: ''
+  }
+  private dataSubject = new BehaviorSubject<ModelInfo>(this.emptyModel);
 
-  private dataSubject = new BehaviorSubject<string>('');
-
-  setData(data: string) {
+  setData(data: ModelInfo) {
     this.dataSubject.next(data);
   }
 

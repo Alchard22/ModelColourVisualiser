@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { DataServiceService } from 'src/app/data-service.service';
 import { ColorPickerModule } from 'ngx-color-picker';
 import { ModelInfo } from 'src/app/interfaces/modelInfo';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-Shop',
@@ -13,7 +14,9 @@ export class ShopComponent implements OnInit {
 
 
 
-  constructor(private dataService : DataServiceService) { }
+  constructor(private dataService : DataServiceService, private title: Title) {
+    this.title.setTitle('Model Colour Visualiser');
+   }
   emptyModel: ModelInfo = {
     model: '',
     colour: ''

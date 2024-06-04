@@ -34,7 +34,7 @@ export class ModelComponent implements OnInit, AfterViewInit {
           window.location.reload()
         }
 
-        this.testing()
+        this.threeDModelStart()
       }
     })
    }
@@ -44,7 +44,7 @@ export class ModelComponent implements OnInit, AfterViewInit {
     if(this.modelData.colour !== ''){
       localStorage.removeItem('modelData')
       this.counter = true;
-      this.testing()
+      this.threeDModelStart();
     }
   }
 
@@ -52,7 +52,7 @@ export class ModelComponent implements OnInit, AfterViewInit {
 
   }
 
-testing(){
+threeDModelStart(){
   //Create a Three.JS Scene
 const scene = new THREE.Scene();
 //create a new camera with positions and angles
